@@ -1,15 +1,15 @@
 import express from 'express';
-import messageController from '../controllers/messageController';
-import messageValidations from '../validations/messageValidations';
-import { validate } from '../middlewares/validate';
+import MessageController from '../controllers/MessageController';
+import MessageValidations from '../validations/MessageValidations';
+import Validator from '../middlewares/Validator';
 
-const router = express.Router();
+const messageRoutes = express.Router();
 
-router
+messageRoutes
     .route('/messages')
     .post(
-        validate(messageValidations.sendMessage),
-        messageController.sendMessage
+        Validator.validate(MessageValidations.sendMessage),
+        MessageController.sendMessage
     );
 
-export default router;
+export default messageRoutes;
