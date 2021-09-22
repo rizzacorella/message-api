@@ -2,18 +2,22 @@ import messages from '../constants/responseMessages';
 import lookup from '../util/lookup';
 import contextTable from '../constants/contextTable';
 
-export const getResponse = (message: string) => {
-    const words: string[] = message.split(/[ ,.!?]+/);
+const messageService = {
+    getResponse: (message: string) => {
+        const words: string[] = message.split(/[ ,.!?]+/);
 
-    let response: string = messages.NO_CONTEXT;
-    let currentResponse: any;
-    for (const word of words) {
-        currentResponse = lookup(word.toLowerCase(), contextTable);
-        if (currentResponse) {
-            response = currentResponse;
-            break;
+        let response: string = messages.NO_CONTEXT;
+        let currentResponse: any;
+        for (const word of words) {
+            currentResponse = lookup(word.toLowerCase(), contextTable);
+            if (currentResponse) {
+                response = currentResponse;
+                break;
+            }
         }
-    }
 
-    return response;
+        return response;
+    }
 }
+
+export default messageService;
