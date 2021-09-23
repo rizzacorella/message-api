@@ -19,6 +19,7 @@ describe('Error', () => {
         let error: any;
         let req: any;
         let res: any;
+        const next = jest.fn();
 
         beforeEach(() => {
             req = {};
@@ -34,7 +35,7 @@ describe('Error', () => {
                 message: 'Endpoint not found'
             };
 
-            Error.handleError(error, req, res);
+            Error.handleError(error, req, res, next);
 
             expect(res.status.mock.calls.length).toBe(1);
             expect(res.status.mock.calls[0][0]).toBe(404);
@@ -48,7 +49,7 @@ describe('Error', () => {
         test('should call res.status and res.json when status is not provided', () => {
             error = {};
 
-            Error.handleError(error, req, res);
+            Error.handleError(error, req, res, next);
 
             expect(res.status.mock.calls.length).toBe(1);
             expect(res.status.mock.calls[0][0]).toBe(500);
