@@ -9,7 +9,7 @@ const MessageService = {
         let response: string = ResponseMessages.NO_CONTEXT;
         let currentResponse: any;
         for (const word of words) {
-            currentResponse = LookupUtil.lookup(word.toLowerCase(), ContextTable);
+            currentResponse = LookupUtil.lookup(word, ContextTable);
             if (currentResponse) {
                 response = currentResponse;
                 break;

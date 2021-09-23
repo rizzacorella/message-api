@@ -4,14 +4,14 @@ const Error = {
     handleNotFound: (req: any, res: any, next: any) => {
         next(createHttpError(404, 'Endpoint not found'));
     },
-    handleError: (error: any, req: any, res: any, next: any) => {
+    handleError: (error: any, req: any, res: any) => {
         if (error) {
             const status = error.status || 500;
 
             res.status(status);
             res.json({
                 status,
-                messages: error.message || 'Something went wrong.'
+                message: status != 500 ? error.message : 'Something went wrong.'
             });
         }
     }

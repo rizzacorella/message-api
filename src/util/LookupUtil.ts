@@ -2,8 +2,10 @@ import LookupTable from '../types/LookupTable';
 
 const LookupUtil = {
     lookup: (word: string, table: LookupTable) => {
-        if (word in table) {
-            return table[word];
+        const lowerCased: string = word.toLowerCase();
+
+        if (lowerCased in table) {
+            return table[lowerCased];
         }
 
         return null;
