@@ -11,7 +11,7 @@ const Error = {
             res.status(status);
             res.json({
                 status,
-                message: status != 500 ? error.message : 'Something went wrong.'
+                message: status !== 500 ? error.message : 'Something went wrong.'
             });
         }
     }
