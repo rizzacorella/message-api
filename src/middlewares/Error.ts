@@ -7,11 +7,12 @@ const Error = {
     handleError: (error: any, req: any, res: any) => {
         if (error) {
             const status = error.status || 500;
+            const message = status !== 500 ? error.message : 'Something went wrong.';
 
             res.status(status);
             res.json({
                 status,
-                message: status !== 500 ? error.message : 'Something went wrong.'
+                message
             });
         }
     }
