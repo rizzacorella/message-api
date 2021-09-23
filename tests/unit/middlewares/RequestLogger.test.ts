@@ -1,7 +1,7 @@
 import { mocked } from 'ts-jest/utils';
 import Logger from '../../../src/util/Logger';
 import RequestLogger from '../../../src/middlewares/RequestLogger';
-import _ from "lodash";
+import _ from 'lodash';
 
 jest.mock('../../../src/util/Logger', () => {
     return {
